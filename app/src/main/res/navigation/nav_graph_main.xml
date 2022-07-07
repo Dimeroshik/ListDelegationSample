@@ -6,6 +6,6 @@
 
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.example.listdelegationsample.fragment.ListFragment"
+        android:name="com.example.listdelegationsample.ui.fragment.list.ListFragment"
         android:label="ListFragment" />
 </navigation>

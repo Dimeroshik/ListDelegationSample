@@ -4,4 +4,5 @@
     <string name="egor">Егор лох</string>
     <string name="vadim">Вадим лох</string>
     <string name="natasha">Наташа молодец</string>
+    <string name="internet_connection_error">Ошибка интернет соединения</string>
 </resources>

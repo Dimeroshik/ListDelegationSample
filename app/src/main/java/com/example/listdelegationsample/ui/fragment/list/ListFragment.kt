@@ -1,28 +1,25 @@
-package com.example.listdelegationsample.fragment
+package com.example.listdelegationsample.ui.fragment.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.listdelegationsample.adapter.TextFieldDelegationAdapter
-import com.example.listdelegationsample.adapter.TextFieldModel
 import com.example.listdelegationsample.databinding.ListFragmentBinding
+import com.example.listdelegationsample.ui.adapter.TextFieldDelegationAdapter
+import com.example.listdelegationsample.ui.adapter.TextFieldModel
+import com.example.listdelegationsample.ui.common.BaseFragment
+
 import com.hannesdorfmann.adapterdelegates4.ListDelegationAdapter
 
-class ListFragment: Fragment() {
+class ListFragment: BaseFragment<ListFragmentBinding>() {
 
-    //Тут мы создаем вью из объекта верстки при помощи ViewBinding, с ним уже тоже знакомы
-    private lateinit var binding: ListFragmentBinding
-
-    override fun onCreateView(
+    //Этот метод позволяет просто создать binding и передать его в BaseFragment, это сделано для
+    //удобства, ведь binding мы создаем в каждом фрагменте
+    override fun onViewBinding(
         inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ListFragmentBinding.inflate(inflater)
-        return binding.root
-    }
+        container: ViewGroup?
+    ): ListFragmentBinding = ListFragmentBinding.inflate(inflater)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,7 +27,7 @@ class ListFragment: Fragment() {
         //* Тут мы задаем нашему recyclerView лист из адаптеров, для каждого уникального элемента
         // создается собственный адаптер, это позволяет не модифицировать каждый раз код старого адаптера
         // а просто добавлять новый под нужды
-        binding.apply {
+        binding?.apply {
             rvRoot.adapter = ListDelegationAdapter(
                 TextFieldDelegationAdapter(
                     getString = {
@@ -54,4 +51,6 @@ class ListFragment: Fragment() {
 
         return list
     }
+
+
 }
